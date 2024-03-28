@@ -13,15 +13,21 @@
     <body>
         <div class="row">
             <div class="col-6 studentAdd">
+                <div>
+                    @if(Session::has('message'))
+                    <p>{{Session::get('message')}}</p>
+                    @endif
+                </div>
                 <h1>Student Add</h1>
-                <form action="">
+                <form method="post" action="{{route('student.save')}}">
+                @csrf
                     <div class="mb-3">
                         <label for="studentName" class="form-label">Student Name</label>
-                        <input type="email" class="form-control" id="studentName" name="studentName" placeholder="name">
+                        <input type="text" class="form-control" id="studentName" name="studentName" placeholder="name">
                     </div>
                     <div class="mb-3">
                         <label for="emailInput" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" name="email">
                     </div>
                     <div class="mb-3">
                         <label for="studentDOB" class="form-label">Student DOB</label>
